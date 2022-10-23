@@ -46,7 +46,7 @@ INSTALLED_APPS = [
     'contact.apps.ContactConfig',
     'users.apps.UsersConfig',
     'concurso.apps.ConcursoConfig',
-    'crispy_forms',
+    'crispy_forms'
 ]
 
 MIDDLEWARE = [
