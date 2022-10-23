@@ -1,0 +1,31 @@
+{% extends 'blog/layout.html' %}
+{% block content %}
+                    <!-- Post preview-->
+                    <div class="bd-exmaple">
+                        <h4>Mis Datos personales</h4>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Usuario</th>
+                                    <th scope="col">Nombre</th>
+                                    <th scope="col">Apellido</th>
+                                </tr>
+                            </thead>
+                            {% for usuario in users %}
+                                {% if usuario is not None %}
+                            <tbody>
+                                    {% if usuario.id|divisibleby:2 == 0 %}
+                                <tr class="table-primary">
+                                    {% else %}
+                                <tr class="table-secundary"></tr>
+                                    {% endif %}
+                                    <td>{{ usuario.id }}</td>
+                                    <td>{{ usuario.username }}</td>
+                                    <td>{{ usuario.first_name }} {{usuario.last_name }}</td>
+                                </tr>
+                            </tbody>                            
+                            {% endif %}
+                        {% endfor %}
+                        </table>
+                    </div>
+{% endblock %}

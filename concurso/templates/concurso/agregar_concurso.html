@@ -1,0 +1,34 @@
+{% extends 'blog/layout.html' %}
+{% block content %}
+{% for concu in concursos %}
+        <!-- Post preview-->
+        <div class="post-preview">
+            <h3>Visita nuestros concursos activos y pasados</h3>
+            <a href="{% url 'inscipcion_concurso' %}">
+                <h2 class="post-title">{{ concu.titulo }}</h2>
+                <h3 class="post-subtitle">{{ concu.categoria }}</h3>
+            </a>
+            <article class="mb-4">
+                <!--div class="container px-4 px-lg-5"-->
+                    <div class="row gx-4 gx-lg-5 justify-content-center">
+                        <!--div class="col-md-10 col-lg-8 col-xl-7"-->
+                            <p>{{ concu.contenido }}</p>
+                        <!--/div-->
+                    </div>
+                <!--/div-->
+            </article>
+            <p class="post-meta">
+                Fecha Inicio: {{ concu.fecha_inicio }}<br />
+                Fecha Termino: {{ concu.fecha_termino }}<br />
+                Posted by
+                <a href="#!">{{ concu.autor }}</a> on {{ concu.fecha_publicacion }}
+            </p>
+            <p>Inscribe tu receta <a href="{% url 'agregar_receta' %}">AQUÍ</a></p>
+            <p><a href="{% url 'listar_receta' %}">Ver recetas</a></p>
+        </div>
+        <!-- Divider-->
+        <hr class="my-4" />
+        <!-- Pager-->
+        <!--div class="d-flex justify-content-end mb-4"><a class="btn btn-primary text-uppercase" href="#!">Older Posts →</a></div-->
+{% endfor %}
+{% endblock %}

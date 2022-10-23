@@ -1,0 +1,30 @@
+{% extends 'blog/layout.html' %}
+{% block content %}
+    <!-- Post preview-->
+    <div class="bd-exmaple">
+        {% for coment in coments %}
+        {% if coment is not None %}
+        <h2>Contactos y comentarios</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Usuario</th>
+                    <th scope="col">Comentario</th>
+                </tr>
+            </thead>
+            <tbody>
+                    {% if coment.id|divisibleby:2 == 0 %}
+                <tr class="table-primary">
+                    {% else %}
+                <tr class="table-secundary"></tr>
+                    {% endif %}
+                    <td>{{ coment.usuario }}</td>
+                    <td>{{ coment.mensaje }}</td>
+                </tr>
+            </tbody>                            
+            {% endif %}
+        {% endfor %}
+        </table>
+        <p>Deja tu comentario o contacto <a href="{% url 'formulario' %}">aquí</a></p>
+    </div>
+{% endblock %}

@@ -1,0 +1,12 @@
+{% extends 'blog/layout.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<h2 class="post-preview">Login</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form|crispy }}
+    <button type="submit"class="btn btn-outline-success">Ingresar</button>
+    <button type="reset" class="btn btn-outline-danger">Limpiar</button>
+</form>
+<p>¿Aún no tienes una cuenta de usuario?, registrate <a href="{% url 'register' %}">aquí</a></p>
+{% endblock %}

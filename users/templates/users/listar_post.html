@@ -1,0 +1,38 @@
+{% extends 'blog/layout.html' %}
+{% block content %}
+        <!-- Post preview-->
+        <div class="bd-exmaple">
+            <h4>Mis Recetas</h4>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Usuario</th>
+                        <th scope="col">Nombre Receta</th>
+                        <th scope="col">Instrucciones</th>
+                        <th scope="col">Opciones</th>
+                    </tr>
+                </thead>
+                {% for receta in recetas %}
+                <tbody>
+                        {% if receta.id|divisibleby:2 == 0 %}
+                    <tr class="table-primary">
+                        {% else %}
+                    <tr class="table-secundary"></tr>
+                        {% endif %}
+                        <td>{{ receta.id }}</td>
+                        <td>{{ receta.autor }}</td>
+                        <td>{{ receta.titulo }}</td>
+                        <td>{{ receta.contenido }}</td>
+                        <td>
+                            <div class="btn-group" role="group" aria-label="Basic outlined example">
+                                <a class="btn btn-outline-warning btn-sm" href="{% url 'editar_receta' receta.id %}">Editar</a>
+                                <a class="btn btn-outline-danger btn-sm" href="{% url 'eliminar_receta' receta.id %}">Eliminar</a>
+                              </div>
+                        </td>
+                    </tr>
+                </tbody>                            
+            {% endfor %}
+            </table>
+        </div>
+{% endblock %}
